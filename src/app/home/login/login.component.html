@@ -33,3 +33,6 @@
     <!--to add a behaviour to a propertie tag, it needs []. If the LoginForm is invalid, the button is disabled-->
     <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
 </form>
+
+<!--[routerLink] is to put a link to http://localhost:4200/home/newuser -->
+<p>Is not a user?<a [routerLink]="['newuser']">Sing up</a></p>
