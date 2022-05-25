@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 //Here in HomeRoutingComponent, the first Component is HomeComponent, it's the base
 //because this is a behaviour from HomeRoutingModule point of view.
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: '',
         component: LoginComponent
+      },
+      {
+        path: 'newuser',
+        component: NewUserComponent
       }
     ]
   }
