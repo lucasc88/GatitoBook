@@ -1,14 +1,35 @@
 <h4 class="text-center">Login</h4>
 
-<form class="form mt-4" (ngSubmit)="login()">
+<!--#loginForm="ngForm" will keep the entire state of the form using the reference variable.
+    The Login Button will be desabled or not depending of the state form-->
+<form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
 
     <div class="form-group">
-        <input class="form-control" placeholder="User Name" [(ngModel)]="user" name="user" />
+        <!--#userField creates a reference variable. #userField="ngModel" is to control the input state-->
+        <input 
+            class="form-control" 
+            placeholder="User Name" 
+            [(ngModel)]="user" 
+            name="user" 
+            #userField="ngModel" 
+            required/>
+        <!--*ngId is a condition to show or not the message using the reference variable that is controling the input.
+            passwordField.touched just to show the message when the user leaves the field-->
+        <app-message *ngIf="userField.invalid && passwordField.touched" msg="Mandatory user name field"></app-message>
     </div>
 
     <div class="form-group">
-        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password"/>
+        <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Password" 
+            [(ngModel)]="password" 
+            name="password"
+            #passwordField="ngModel"
+            required/>
+        <app-message *ngIf="passwordField.invalid && passwordField.touched" msg="Mandatory password field"></app-message>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Login</button>
+    <!--to add a behaviour to a propertie tag, it needs []. If the LoginForm is invalid, the button is disabled-->
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
 </form>
