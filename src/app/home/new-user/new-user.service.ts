@@ -10,7 +10,7 @@ export class NewUserService {
   constructor(private http: HttpClient) { }
 
   registerNewUser(newUser: NewUser) {
-    return this.http.post('http://localhost:3000/user/signup', newUser);
+    return this.http.post('http://localhost:3000/login', newUser);
   }
 
   checkExistingUser(userName: string) {

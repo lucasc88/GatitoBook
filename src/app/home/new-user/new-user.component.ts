@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { lowerCaseValidator } from './lower-case.validator';
 import { NewUser } from './new-user';
 import { NewUserService } from './new-user.service';
@@ -20,7 +21,8 @@ export class NewUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private newUserService: NewUserService,
-    private userExistService: UserExistService
+    private userExistService: UserExistService,
+    private router: Router
   ) { }
 
   //ngOnInit() runs when all the service is already injected
@@ -29,7 +31,7 @@ export class NewUserComponent implements OnInit {
     this.newUserForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],//second array postion is for validations
       fullName: ['', [Validators.required, Validators.minLength(4)]],
-      userName: ['', [Validators.required, lowerCaseValidator], [this.userExistService.userAlreadyExist()]],
+      userName: ['', [Validators.required, lowerCaseValidator]],
       password: ['', [Validators.required]]
     })
   }
@@ -37,7 +39,16 @@ export class NewUserComponent implements OnInit {
   register() {
     //getRawValue() returns the object of the form fields.
     //Cast to interface NewUser is available because it has the same fields names
-    const newUser = this.newUserForm.getRawValue() as NewUser;
-    console.log(newUser);
+
+    if (this.newUserForm.valid) {
+      const newUser = this.newUserForm.getRawValue() as NewUser;
+      this.newUserService.registerNewUser(newUser).subscribe(() => {
+        this.router.navigate(['']);
+      },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
