@@ -29,9 +29,14 @@
     <div class="form-group">
         <input placeholder="User name" class="form-control" formControlName="userName"/>
         <app-message 
-            *ngIf="newUserForm.get('userName')?.errors
+            *ngIf="newUserForm.get('userName')?.errors?.['required']
             && newUserForm.get('userName')?.touched" 
-            msg="User name name is mandatory">
+            msg="User name is mandatory">
+        </app-message>
+        <app-message 
+            *ngIf="newUserForm.get('userName')?.errors?.['invalidLowerCase']
+            && newUserForm.get('userName')?.touched" 
+            msg="User name must be lower case">
         </app-message>
     </div>
 
