@@ -1,20 +1,21 @@
 <h4 class="text-center">Register and show your Pet to the world</h4>
 
-<form class="form mt-4">
+<!--[formGroup] to link with the newUserForm variable. Event Submit will call register()-->
+<form class="form mt-4" [formGroup]="newUserForm" (submit)="register()">
     <div class="form-group">
-        <input placeholder="E-mail" class="form-control" />
+        <input placeholder="E-mail" class="form-control" formControlName="email"/><!--formControlName is to biding to FormBuilder-->
     </div>
 
     <div class="form-group">
-        <input placeholder="Full name" class="form-control" />
+        <input placeholder="Full name" class="form-control" formControlName="fullName"/>
     </div>
 
     <div class="form-group">
-        <input placeholder="User name" class="form-control" />
+        <input placeholder="User name" class="form-control" formControlName="userName"/>
     </div>
 
     <div class="form-group">
-        <input placeholder="Password" class="form-control" type="password"/>
+        <input placeholder="Password" class="form-control" type="password" formControlName="password"/>
     </div>
 
     <button class="btn btn-primary btn-block">Register</button>
