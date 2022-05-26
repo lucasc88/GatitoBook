@@ -4,18 +4,44 @@
 <form class="form mt-4" [formGroup]="newUserForm" (submit)="register()">
     <div class="form-group">
         <input placeholder="E-mail" class="form-control" formControlName="email"/><!--formControlName is to biding to FormBuilder-->
+        
+        <!--Error messages will appear if the form validators is invalid. Safe code using ?. to avoid 'null pointers'-->
+        <app-message 
+            *ngIf="newUserForm.get('email')?.errors?.['required'] 
+            && newUserForm.get('email')?.touched" 
+            msg="E-mail is mandatory">
+        </app-message>
+        <app-message 
+            *ngIf="newUserForm.get('email')?.errors?.['email'] 
+            && newUserForm.get('email')?.touched" 
+            msg="Invalid e-mail"></app-message>
     </div>
 
     <div class="form-group">
         <input placeholder="Full name" class="form-control" formControlName="fullName"/>
+        <app-message 
+            *ngIf="newUserForm.get('fullName')?.errors
+            && newUserForm.get('fullName')?.touched" 
+            msg="Full name is mandatory and min length is 4">
+        </app-message>
     </div>
 
     <div class="form-group">
         <input placeholder="User name" class="form-control" formControlName="userName"/>
+        <app-message 
+            *ngIf="newUserForm.get('userName')?.errors
+            && newUserForm.get('userName')?.touched" 
+            msg="User name name is mandatory">
+        </app-message>
     </div>
 
     <div class="form-group">
         <input placeholder="Password" class="form-control" type="password" formControlName="password"/>
+        <app-message 
+            *ngIf="newUserForm.get('password')?.errors
+            && newUserForm.get('password')?.touched" 
+            msg="Password is mandatory">
+        </app-message>
     </div>
 
     <button class="btn btn-primary btn-block">Register</button>
