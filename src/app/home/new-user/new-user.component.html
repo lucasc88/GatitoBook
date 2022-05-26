@@ -38,6 +38,11 @@
             && newUserForm.get('userName')?.touched" 
             msg="User name must be lower case">
         </app-message>
+        <app-message 
+            *ngIf="newUserForm.get('userName')?.errors?.['userExisting']
+            && newUserForm.get('userName')?.touched" 
+            msg="User already exist">
+        </app-message>
     </div>
 
     <div class="form-group">

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { lowerCaseValidator } from './lower-case.validator';
 import { NewUser } from './new-user';
 import { NewUserService } from './new-user.service';
+import { UserExistService } from './user-exist.service';
 
 @Component({
   selector: 'app-new-user',
@@ -16,7 +17,11 @@ export class NewUserComponent implements OnInit {
   newUserForm!: FormGroup;
 
   //FormBuilder is a service to create reactive forms
-  constructor(private formBuilder: FormBuilder, private newUserService: NewUserService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private newUserService: NewUserService,
+    private userExistService: UserExistService
+  ) { }
 
   //ngOnInit() runs when all the service is already injected
   ngOnInit(): void {
@@ -24,12 +29,12 @@ export class NewUserComponent implements OnInit {
     this.newUserForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],//second array postion is for validations
       fullName: ['', [Validators.required, Validators.minLength(4)]],
-      userName: ['', [Validators.required, lowerCaseValidator]],
+      userName: ['', [Validators.required, lowerCaseValidator], [this.userExistService.userAlreadyExist()]],
       password: ['', [Validators.required]]
     })
   }
 
-  register(){
+  register() {
     //getRawValue() returns the object of the form fields.
     //Cast to interface NewUser is available because it has the same fields names
     const newUser = this.newUserForm.getRawValue() as NewUser;
