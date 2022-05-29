@@ -1,0 +1,14 @@
+<!--[ngClass] is to controll the CSS on the menu. It works like a switch, an if.-->
+<div [ngClass]="{'active-menu': showMenu}">
+    
+    <div class="menu-bar">
+        <i class="fa fa-window-close" (click)="openMenu()" (keyup.space)="openMenu()"></i>
+
+        <!--This menu has no items. To put the items inside this component is necessary the <ng-content>-->
+        <ng-content></ng-content>
+    </div>
+
+
+    <div class="overlay" (click)="openMenu()">
+    </div>
+</div>
