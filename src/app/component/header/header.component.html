@@ -6,15 +6,16 @@
         <!--pipe |, is to get the Observable data in the Tamplate-->
         <!--user$ | async , it will get the user data running the Subscribe in the Template-->
         <!--as user , it will do a parse to user variable to be used in the Template-->
-        <div *ngIf="user$ | async as user">
+        <!--<div *ngIf="user$ | async as user">-->
+        <div *ngIf="'logged'">
 
             <!--if the user.name exist, show it. Otherwise, <ng-template #login> will be shown-->
-            <div *ngIf="user.name; else login">
-                <i class=“ fa fa-user-circle mr-1></i>
-                <a class="mr-1">{{user.name}}</a>
-                <a (click)="logout()">Logout</a>
+            <!--<div *ngIf="user; else login">-->
+            <div *ngIf="'logged'; else login">
+                <i class="fa fa-user-circle mr-1"></i>
+                <a class="link-primary">Fake User is Looged</a>
+                <a (click)="logout()" class="link-danger">Logout</a>
             </div>
-
 
         </div>
     </nav>

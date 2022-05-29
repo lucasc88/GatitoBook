@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
 
+
+//Exports means who import HeaderModule, can use the HeaderComponent
 @NgModule({
   declarations: [HeaderComponent],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent] //Exports means who import HeaderModule, can use the HeaderComponent
+  exports: [HeaderComponent] 
 })
 export class HeaderModule { }
