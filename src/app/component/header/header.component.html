@@ -1,7 +1,21 @@
 <header class="sticky-top">
 
     <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">Gatito Book</a>
+        <a class="navbar-brand">
+            <i class="fa fa-bars mr-2" (click)="menu.openMenu()" (keyup.space)="menu.openMenu()"></i>
+            Gatito Book
+        </a>
+
+        <app-menu #menu><!--<ng-content> tag in menu.component.html will be used to show the <ul>-->
+            <ul class="list-unstyled">
+                <li>
+                    <a [routerLink]="['animals', 'new']">New Animal</a>
+                </li>
+                <li>
+                    <a [routerLink]="['otherLink', 'Other Link Name']">Other Link Name</a>
+                </li>
+            </ul>
+        </app-menu>
 
         <!--pipe |, is to get the Observable data in the Tamplate-->
         <!--user$ | async , it will get the user data running the Subscribe in the Template-->
