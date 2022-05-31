@@ -29,7 +29,6 @@
             required/>
         <app-message *ngIf="passwordField.invalid && passwordField.touched" msg="Mandatory password field"></app-message>
     </div>
-    
 
     <!--to add a behaviour to a propertie tag, it needs []. If the LoginForm is invalid, the button is disabled-->
     <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
