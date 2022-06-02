@@ -1,0 +1,11 @@
+<div class="card boarder-light text-center">
+
+    <!--title value will be received by the component that calls this one.
+    It will be shown only if filled-->
+    <h4 class="card-header" *ngIf="title">{{ title }}</h4>
+
+    <div class="card-block text-justify">
+        <!--the content will be projected in this tag <ng-content>-->
+        <ng-content></ng-content>
+    </div>
+</div>
