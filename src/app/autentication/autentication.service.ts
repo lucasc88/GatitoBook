@@ -15,26 +15,31 @@ const API = environment.apiURL;
 export class AutenticationService {
 
   //Constructor declares a private attribute HttpClient
-  constructor(private httpClient: HttpClient, private userService: UserService) { }
+  constructor(private httpClient: HttpClient) { }
 
 
   //Authentication Method do a POST using the httpClient. First parameter: URL; second: the return body
   //Observable is a asynchronous operation
-  authentication(user: string, password: string): Observable<HttpResponse<any>> {
+  authentication(user: string, password: string): Observable<any> {
+
+    return this.httpClient.post('http://localhost:3000/login', {
+      userName: user,
+      password: password
+    });
 
     //run in the api folder command(json-server --watch db.json) to start Json Server http://localhost:3000/login
-    return this.httpClient
-      .post(
-        `${API}/user/login`, {
-        userName: user,
-        password: password
-      },
-        { observe: 'response' }
-      )
-      .pipe(
-        tap((res) => {
-          const authToken = res.headers.get('x-access-token') ?? '';
-          this.userService.saveToken(authToken);
-        }));
+    //return this.httpClient
+    //  .post(
+    //    `${API}/user/login`, {
+    //    userName: user,
+    //    password: password
+    //  },
+    //    { observe: 'response' }
+    //  )
+    //  .pipe(
+    //    tap((res) => {
+    //      const authToken = res.headers.get('x-access-token') ?? '';
+    //      //this.userService.saveToken(authToken);
+    //    }));
   }
 }
