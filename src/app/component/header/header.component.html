@@ -6,7 +6,8 @@
             Gatito Book
         </a>
 
-        <app-menu #menu><!--<ng-content> tag in menu.component.html will be used to show the <ul>-->
+        <app-menu #menu>
+            <!--<ng-content> tag in menu.component.html will be used to show the <ul>-->
             <ul class="list-unstyled">
                 <li>
                     <a [routerLink]="['animals', 'new']">New Animal</a>
@@ -20,14 +21,12 @@
         <!--pipe |, is to get the Observable data in the Tamplate-->
         <!--user$ | async , it will get the user data running the Subscribe in the Template-->
         <!--as user , it will do a parse to user variable to be used in the Template-->
-        <!--<div *ngIf="user$ | async as user">-->
-        <div *ngIf="'logged'">
+        <div *ngIf="user$ | async as user">
 
             <!--if the user.name exist, show it. Otherwise, <ng-template #login> will be shown-->
-            <!--<div *ngIf="user; else login">-->
-            <div *ngIf="'logged'; else login">
+            <div *ngIf="user.name; else login">
                 <i class="fa fa-user-circle mr-1"></i>
-                <a class="link-primary">Fake User is Looged</a>
+                <a class="link-primary">{{user.name}}</a>
                 <a (click)="logout()" class="link-danger">Logout</a>
             </div>
 
@@ -37,7 +36,8 @@
     <!--ng-template is a specific Angular component, it will run only if something request it-->
     <ng-template #login>
         <span class="navbar-text">
-            <a [routerLink]="['']">Login</a><!--routerLink needs to be imported in the HeaderModule-->
+            <a [routerLink]="['']">Login</a>
+            <!--routerLink needs to be imported in the HeaderModule-->
         </span>
     </ng-template>
 </header>

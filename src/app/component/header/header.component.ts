@@ -11,18 +11,12 @@ import { UserService } from 'src/app/autentication/user/user.service';
 export class HeaderComponent {
 
   //with $ at the final, it means that's an Observable type
-  //user$ = this.userService.returnUser();
-  
-  logged = true;
+  user$ = this.userService.returnUser();
 
-  //constructor(private userService: UserService, private router: Router) { }
-
-  constructor(private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   logout() {
-    //this.userService.logout(); it's not implemented in the back-end
-    console.log("Logout is Done");
-    this.logged = !this.logged;
+    this.userService.logout();
     this.router.navigate(['']);
   }
 
