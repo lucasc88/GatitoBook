@@ -12,7 +12,7 @@ const API = environment.apiURL;
 @Injectable({
   providedIn: 'root'
 })
-export class AutenticationService {
+export class AuthenticationService {
 
   //Constructor declares a private attribute HttpClient
   constructor(private httpClient: HttpClient, private userService: UserService) { }

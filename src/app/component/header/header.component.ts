@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { UserService } from 'src/app/autentication/user/user.service';
+import { UserService } from 'src/app/authentication/user/user.service';
 
 @Component({
   selector: 'app-header',

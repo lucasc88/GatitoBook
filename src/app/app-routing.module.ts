@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from './antentication/authentication.guard';
-import { LoginGuard } from './antentication/login.guard';
+import { AuthenticationGuard } from './authenticationGuard/authentication.guard';
+import { LoginGuard } from './authenticationGuard/login.guard';
 
 //The first Routes position is to define the home page(without any resource)
 //for exemple: empty path or blank space in the path will be redirected to home page
