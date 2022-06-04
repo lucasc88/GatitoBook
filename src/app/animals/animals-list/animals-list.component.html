@@ -1,1 +1,4 @@
-<app-animals-pictures-grid [animals]="animals"></app-animals-pictures-grid>
+<!--animals$ will attribute its data to animals variable-->
+<div *ngIf="animals$ | async as animals">
+    <app-animals-pictures-grid [animals]="animals"></app-animals-pictures-grid>
+</div>
