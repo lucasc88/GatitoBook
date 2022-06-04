@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './antentication/authentication.guard';
 
 //The first Routes position is to define the home page(without any resource)
 //for exemple: empty path or blank space in the path will be redirected to home page
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'animals',
-    loadChildren: () => import('./animals/animals.module').then(m => m.AnimalsModule)
+    loadChildren: () => import('./animals/animals.module').then(m => m.AnimalsModule),
+    canLoad: [AuthenticationGuard]
   }
 ];
 
