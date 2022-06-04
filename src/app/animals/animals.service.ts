@@ -35,12 +35,13 @@ export class AnimalsService {
     //POST request needs URL and Body by default.
     //However to get the POST request status, needs observe: 'response' to get the entire response
     return this.httpClient.post(
-      `${API}/photos/${id}/likes`,
+      `${API}/photos/${id}/like`,
       {},
       { observe: 'response' }
     ).pipe( //to handle the request flow with operators
       mapTo(true), //on success, always returns true
       catchError((error) => { //on failure, returns false or throw the error
+        //In the backend is implemented to return 304 (NOT_MODIFIED) if the request is using the same token
         return error.status == NOT_MODIFIED ? of(false) : throwError(error);//of(false) is an Observable
       })
     );
