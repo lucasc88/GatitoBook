@@ -46,4 +46,20 @@ export class AnimalsService {
       })
     );
   }
+
+  upload(description: string, allowComments: boolean, file: File) {
+    const formData = new FormData();//FormData is to work with binary file in the request
+    formData.append('description', description);
+    formData.append('allowComments', allowComments ? 'true' : 'false');
+    formData.append('imageFile', file);
+
+    return this.httpClient.post(
+      `${API}/photos/upload`, //URL
+      formData, //body
+      {
+        observe: 'events', //to show the upload progress
+        reportProgress: true
+      },
+    );
+  }
 }

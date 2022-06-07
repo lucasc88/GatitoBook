@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { AnimalsListComponent } from './animals-list/animals-list.component';
 import { AnimalsListResolver } from './animals-list/animals-list.resolver';
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
     resolve: {
       animals: AnimalsListResolver
     }
+  },
+  {
+    path: 'new',
+    component: NewAnimalComponent
   },
   {
     path: ':animalId',

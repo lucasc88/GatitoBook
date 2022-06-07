@@ -1,0 +1,52 @@
+<div class="container">
+    <form [formGroup]="animalForm" class="row" (submit)="upload()">
+        <div class="col-md-6 text-center">
+            <div class="form-group" *ngIf="!preview; else previewImage">
+
+                <button type="button" class="but btn-primary" (click)="fileInput.click()">
+                    <i class="fa fa-image fa-4x alifn-middle"></i>
+                </button>
+
+                <input #fileInput type="file" hidden formControlName="file" accept="image/*"
+                    (change)="saveFile($event.target)">
+
+
+                <app-message msg="Please, select a picture" *ngIf="!!animalForm.get('file')?.errors?.['required']">
+                </app-message>
+
+            </div>
+
+            <ng-template #previewImage>
+                <app-animal [url]="preview" title="Preview"></app-animal>
+            </ng-template>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <textarea formControlName="description" class="form-control form-control-sm"
+                    placeholder="Animal description"></textarea>
+                <app-message msg="Maximum field length is 300 characters"
+                    *ngIf="!!animalForm.get('description')?.errors?.['maxLenght']"></app-message>
+            </div>
+
+            <div class="form-group">
+                <label class="text-muted">
+                    Allows Comment
+                    <input type="checkbox" formControlName="allowComments">
+                </label>
+            </div>
+
+            <div *ngIf="!percentualFinished; else uploadDiv">
+                <button [disabled]="animalForm.invalid" type="submit" class="btn btn-primary btn-block">Send</button>
+
+                <a routerLink="['animals']" class="btn btn-secondary btn-block">Cancel</a>
+            </div>
+
+            <ng-template #uploadDiv>
+                <div class="text-center display-4">
+                    Upload Percent {{ percentualFinished }}%
+                </div>
+            </ng-template>
+        </div>
+    </form>
+</div>
