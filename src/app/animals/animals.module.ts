@@ -8,6 +8,8 @@ import { CardModule } from '../component/card/card.module';
 import { AnimalsPicturesGridComponent } from './animals-pictures-grid/animals-pictures-grid.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { CommentsComponent } from './animal-detail/comments/comments.component';
+import { MessageModule } from '../component/message/message.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { CommentsComponent } from './animal-detail/comments/comments.component';
   imports: [
     CommonModule,
     AnimalsRoutingModule,
-    CardModule
+    CardModule,
+    MessageModule,
+    ReactiveFormsModule
   ]
 })
 export class AnimalsModule { }

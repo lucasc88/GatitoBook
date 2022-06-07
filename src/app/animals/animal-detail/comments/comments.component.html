@@ -1,1 +1,28 @@
-<p>comments works!</p>
+<div *ngIf="comments$ | async as comments">
+
+    <ul class="list-unstyled comment-list">
+        <li *ngFor="let comment of comments">
+            <p class="text-dark font-weight-bold mr-1">{{ comment.userName }}</p>
+            <em>{{ comment.date | date:"dd-MM-yyyy HH:mm"}}</em>
+            <p class="break-word mb-2">{{ comment.text }}</p>
+        </li>
+    </ul>
+
+    <div class="mt-4">
+
+        <form [formGroup]="commentForm" (submit)="save()">
+            <div class="input-group">
+                <textarea class="form-control" formControlName="comment"></textarea>
+                <div class="input-group-append">
+                    <button [disabled]="commentForm.invalid" class="btn btn-primary pull-left">
+                        Publish
+                    </button>
+                </div>
+            </div>
+
+            <!--!! in the *ngIf to convert to a boolean value and ?.errors is to check if there is error or not-->
+            <app-message msg="Maximum size 300 characters" *ngIf="!!commentForm.get('comment')?.errors?.['maxLenght']">
+            </app-message>
+        </form>
+    </div>
+</div>
