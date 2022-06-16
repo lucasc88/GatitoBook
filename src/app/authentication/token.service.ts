@@ -7,7 +7,7 @@ const KEY = 'token';
 })
 export class TokenService {
 
-  //method to return token using the localStorage variable from the library that was intalled (jwt-decode)
+  //method to return token using the localStorage variable from the library that was installed (jwt-decode)
   returnToken() {
     //If there is no token, it returns ''
     return localStorage.getItem(KEY) ?? '';

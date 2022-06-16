@@ -10,10 +10,10 @@
             <!--<ng-content> tag in menu.component.html will be used to show the <ul>-->
             <ul class="list-unstyled">
                 <li>
-                    <a [routerLink]="['animals', 'new']">New Animal</a>
+                    <a [routerLink]="['animals', 'new']" (click)="menu.openMenu()">New Animal</a>
                 </li>
                 <li>
-                    <a [routerLink]="['otherLink', 'Other Link Name']">Other Link Name</a>
+                    <a [routerLink]="['animals']" (click)="menu.openMenu()">Animals</a>
                 </li>
             </ul>
         </app-menu>

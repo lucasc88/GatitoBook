@@ -21,7 +21,6 @@ export class NewUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private newUserService: NewUserService,
-    private userExistService: UserExistService,
     private router: Router
   ) { }
 

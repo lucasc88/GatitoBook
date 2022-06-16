@@ -7,13 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewUserModule } from './new-user/new-user.module';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginComponent,
-    NewUserComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,

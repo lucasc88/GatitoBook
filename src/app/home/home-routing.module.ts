@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'newuser',
-        component: NewUserComponent
+        loadChildren: () => import('./new-user/new-user.module').then(m => m.NewUserModule)
       }
     ]
   }

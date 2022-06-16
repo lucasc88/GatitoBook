@@ -39,7 +39,7 @@
             <div *ngIf="!percentualFinished; else uploadDiv">
                 <button [disabled]="animalForm.invalid" type="submit" class="btn btn-primary btn-block">Send</button>
 
-                <a routerLink="['animals']" class="btn btn-secondary btn-block">Cancel</a>
+                <a [routerLink]="['../']" class="btn btn-secondary btn-block">Cancel</a>
             </div>
 
             <ng-template #uploadDiv>
